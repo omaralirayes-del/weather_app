@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.weather_app"
-    compileSdk = 34 // أو 35 حسب المتوفر لديك
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.weather_app"
@@ -23,8 +23,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    // استبدل الطريقة القديمة بهذه الصيغة الحديثة
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
 }
 
