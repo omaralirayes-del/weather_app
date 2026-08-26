@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -15,10 +14,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
     defaultConfig {
         applicationId = "com.example.weather_app"
         minSdk = flutter.minSdkVersion
@@ -29,7 +24,6 @@ android {
 
     buildTypes {
         getByName("release") {
-            // توقيع نسخة الـ release تلقائياً بمفتاح الـ debug ليثبت على أي هاتف فوراً
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             isShrinkResources = true
