@@ -16,33 +16,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. إعداد بيئة جافا (مطلوبة لبناء أندرويد)
+      # 2. إعداد بيئة جافا
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # 3. إعداد فلاتر مع تفعيل خاصية التخزين المؤقت (Caching) لسرعة خارقة في البناء التالي
+      # 3. إعداد فلاتر
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.x' # يمكنك تحديث النسخة حسب رغبتك أو وضع stable
+          flutter-version: '3.x'
           channel: 'stable'
           cache: true
-          cache-key: "flutter-:os:-:channel:-:version:-:arch:-:hash:"
 
       # 4. جلب الحزم المطلوبة
       - name: Install dependencies
         run: flutter pub get
 
-      # 5. بناء الـ APK بأعلى ضغط وأقل مساحة ممكنة (تقسيم المعماريات)
+      # 5. بناء APK واحد خفيف وأسرع أداء ومخصص للموبايلات (arm64)
       - name: Build APK Release
-        run: flutter build apk --release --split-per-abi
+        run: flutter build apk --release --target-platform android-arm64
 
-      # 6. رفع ملف الـ APK الناتج ليكون جاهزاً للتحميل من صفحة Actions في جيت هب
+      # 6. رفع ملف الـ APK الناتج
       - name: Upload APK Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: release-apks
-          path: build/app/outputs/apk/release/*.apk
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
