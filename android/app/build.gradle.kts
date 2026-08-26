@@ -6,18 +6,16 @@ plugins {
 
 android {
     namespace = "com.example.weather_app"
-    compileSdk = 36 // تم التحديث بناءً على طلب الحزم
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.weather_app"
         minSdk = 21
-        targetSdk = 36 // تم التحديث
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
         multiDexEnabled = true
     }
-    // ... باقي الكود
-}
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
@@ -25,7 +23,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    // استبدل الطريقة القديمة بهذه الصيغة الحديثة
     kotlin {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
