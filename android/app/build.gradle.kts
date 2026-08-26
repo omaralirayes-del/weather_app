@@ -9,11 +9,14 @@ android {
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
-    compileSdk 36
+    compileSdk 35
 
     defaultConfig {
-        multiDexEnabled true
-    }
+    // ...
+    minSdk = 21
+    targetSdk = 34
+    multiDexEnabled = true
+}
 
     compileOptions {
         coreLibraryDesugaringEnabled true
