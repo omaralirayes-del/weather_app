@@ -6,16 +6,18 @@ plugins {
 
 android {
     namespace = "com.example.weather_app"
-    compileSdk = 34
+    compileSdk = 36 // تم التحديث بناءً على طلب الحزم
 
     defaultConfig {
         applicationId = "com.example.weather_app"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 36 // تم التحديث
         versionCode = 1
         versionName = "1.0"
         multiDexEnabled = true
     }
+    // ... باقي الكود
+}
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
